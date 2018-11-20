@@ -48,6 +48,3 @@
 # physical sdcard and OTG
 /devices/mtk-msdc.0/11240000.msdc1*                             auto              auto    defaults                                                     voldmanaged=sdcard1:auto,encryptable=userdata
 /devices/soc/11270000.usb3_xhci*                                auto              auto    defaults                                                     voldmanaged=usbotg:auto
-
-# ZRAM, 1GB
-/dev/block/zram0                                                none              swap    defaults                                                     zramsize=1073741824,max_comp_streams=8
