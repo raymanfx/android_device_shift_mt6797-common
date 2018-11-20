@@ -1,0 +1,80 @@
+on post-fs
+    # change permission for engineer mode
+    chown radio system /proc/clkmgr/pll_test
+    chown radio system /proc/clkmgr/pll_fsel
+    chmod 0664 /proc/clkmgr/pll_test
+    chmod 0664 /proc/clkmgr/pll_fsel
+    # change permission for engineer mode
+    chown radio system /proc/freqhopping/dramc
+    chown radio system /proc/freqhopping/dumpregs
+    chown radio system /proc/freqhopping/freqhopping_debug
+    chown radio system /proc/freqhopping/status
+    chown radio system /proc/freqhopping/userdef
+
+on post-fs-data
+    # EM CPU Speed Stress
+    chown root radio /proc/cpu_ss/cpu_ss_debug_mode
+    chown root radio /proc/cpu_ss/cpu_ss_mode
+    chown root radio /proc/cpu_ss/cpu_ss_period
+    chown root radio /proc/cpu_ss/cpu_ss_period_mode
+    chmod 0664 /proc/cpu_ss/cpu_ss_debug_mode
+    chmod 0664 /proc/cpu_ss/cpu_ss_mode
+    chmod 0664 /proc/cpu_ss/cpu_ss_period
+    chmod 0664 /proc/cpu_ss/cpu_ss_period_mode
+
+# Set enableflags for boot trace
+on property:ro.boot.boot_trace=1
+    setprop debug.atrace.tags.enableflags 0x7ffffe
+
+# MTK printk uart controller
+on property:persist.uartconsole.enable=1
+    write /proc/mtprintk 1
+
+# bugreport is triggered by holding down volume down, volume up and power
+service bugreport /system/bin/dumpstate -d -p -B -z \
+        -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
+    class late_start
+    disabled
+    oneshot
+    keycodes 114 115 116
+
+# write proc for test sim
+on property:gsm.sim.ril.testsim=0
+    write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 0
+    write /proc/sys/net/ipv4/tcp_rto_min 200
+    write /proc/sys/net/ipv4/tcp_early_retrans 3
+
+on property:gsm.sim.ril.testsim=1
+    write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 1
+    write /proc/sys/net/ipv4/tcp_rto_min 400
+    write /proc/sys/net/ipv4/tcp_early_retrans 0
+
+on property:gsm.sim.ril.testsim.2=0
+    write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 0
+    write /proc/sys/net/ipv4/tcp_rto_min 200
+    write /proc/sys/net/ipv4/tcp_early_retrans 3
+
+on property:gsm.sim.ril.testsim.2=1
+    write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 1
+    write /proc/sys/net/ipv4/tcp_rto_min 400
+    write /proc/sys/net/ipv4/tcp_early_retrans 0
+
+on property:gsm.sim.ril.testsim.3=0
+    write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 0
+    write /proc/sys/net/ipv4/tcp_rto_min 200
+    write /proc/sys/net/ipv4/tcp_early_retrans 3
+
+on property:gsm.sim.ril.testsim.3=1
+    write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 1
+    write /proc/sys/net/ipv4/tcp_rto_min 400
+    write /proc/sys/net/ipv4/tcp_early_retrans 0
+
+on property:gsm.sim.ril.testsim.4=0
+    write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 0
+    write /proc/sys/net/ipv4/tcp_rto_min 200
+    write /proc/sys/net/ipv4/tcp_early_retrans 3
+
+on property:gsm.sim.ril.testsim.4=1
+    write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 1
+    write /proc/sys/net/ipv4/tcp_rto_min 400
+    write /proc/sys/net/ipv4/tcp_early_retrans 0

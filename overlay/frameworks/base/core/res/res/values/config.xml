@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+** Copyright 2009, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+
+<!-- These resources are around just to allow their values to be customized
+     for different hardware and product builds.  Do not translate. -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Stability requirements in milliseconds for accepting a new brightness level.  This is used
+         for debouncing the light sensor.  Different constants are used to debounce the light sensor
+         when adapting to brighter or darker environments.  This parameter controls how quickly
+         brightness changes occur in response to an observed change in light level that exceeds the
+         hysteresis threshold. -->
+    <integer name="config_autoBrightnessBrighteningLightDebounce">2000</integer>
+    <integer name="config_autoBrightnessDarkeningLightDebounce">4000</integer>
+
+    <!-- Minimum allowable screen brightness to use in a very dark room.
+         This value sets the floor for the darkest possible auto-brightness
+         adjustment.  It is expected to be somewhat less than the first entry in
+         config_autoBrightnessLcdBacklightValues so as to allow the user to have
+         some range of adjustment to dim the screen further than usual in very
+         dark rooms. The contents of the screen must still be clearly visible
+         in darkness (although they may not be visible in a bright room). -->
+    <integer name="config_screenBrightnessDark">10</integer>
+
+    <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
+         The N entries of this array define N + 1 control points as follows:
+         (1-based arrays)
+
+         Point 1:            (0, value[1]):             lux <= 0
+         Point 2:     (level[1], value[2]):  0        < lux <= level[1]
+         Point 3:     (level[2], value[3]):  level[2] < lux <= level[3]
+         ...
+         Point N+1: (level[N], value[N+1]):  level[N] < lux
+
+         The control points must be strictly increasing.  Each control point
+         corresponds to an entry in the brightness backlight values arrays.
+         For example, if LUX == level[1] (first element of the levels array)
+         then the brightness will be determined by value[2] (second element
+         of the brightness values array).
+
+         Spline interpolation is used to determine the auto-brightness
+         backlight values for LUX levels between these control points.
+
+         Must be overridden in platform specific overlays -->
+    <integer-array name="config_autoBrightnessLevels">
+        <item>20</item>
+        <item>50</item>
+        <item>150</item>
+        <item>300</item>
+        <item>600</item>
+        <item>800</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+        <item>3500</item>
+        <item>5500</item>
+        <item>8000</item>
+        <item>12000</item>
+        <item>25000</item>
+        <item>40000</item>
+    </integer-array>
+
+    <!-- Array of output values for LCD backlight corresponding to the LUX values
+         in the config_autoBrightnessLevels array.  This array should have size one greater
+         than the size of the config_autoBrightnessLevels array.
+         The brightness values must be between 0 and 255 and be non-decreasing.
+         This must be overridden in platform specific overlays -->
+    <integer-array name="config_autoBrightnessLcdBacklightValues">
+        <item>10</item>
+        <item>25</item>
+        <item>40</item>
+        <item>90</item>
+        <item>90</item>
+        <item>90</item>
+        <item>90</item>
+        <item>90</item>
+        <item>155</item>
+        <item>190</item>
+        <item>190</item>
+        <item>190</item>
+        <item>190</item>
+        <item>190</item>
+        <item>255</item>
+        <item>255</item>
+    </integer-array>
+
+    <string-array name="config_mobile_tcp_buffers">
+        <item>lte:524288,1048576,2097152,262144,524288,1048576</item>
+        <item>lte_ca:524288,1048576,2097152,262144,524288,1048576</item>
+        <item>umts:4094,87380,524288,4096,16384,524288</item>
+        <item>hspa:4094,87380,524288,4096,16384,524288</item>
+        <item>hsupa:4094,87380,524288,4096,16384,524288</item>
+        <item>hsdpa:4094,87380,524288,4096,16384,524288</item>
+        <item>hspap:4094,87380,1220608,4096,16384,1220608</item>
+        <item>edge:4093,26280,35040,4096,16384,35040</item>
+        <item>gprs:4092,8760,11680,4096,8760,11680</item>
+        <item>evdo:4094,87380,524288,4096,16384,262144</item>
+    </string-array>
+
+    <!-- Configure wifi tcp buffersizes in the form:
+         rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
+    <string name="config_wifi_tcp_buffers" translatable="false">524288,1048576,2097152,262144,524288,1048576</string>
+
+    <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
+    <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
+
+    <!-- Default list of files pinned by the Pinner Service -->
+    <string-array translatable="false" name="config_defaultPinnerServiceFiles">
+        <item>"/system/framework/arm64/boot-framework.oat"</item>
+        <item>"/system/framework/arm64/boot-framework.vdex"</item>
+        <item>"/system/framework/oat/arm64/services.odex"</item>
+        <item>"/system/framework/oat/arm64/services.vdex"</item>
+        <item>"/system/framework/arm64/boot.oat"</item>
+        <item>"/system/framework/arm64/boot.vdex"</item>
+        <item>"/system/framework/arm64/boot-core-libart.oat"</item>
+        <item>"/system/framework/arm64/boot-core-libart.vdex"</item>
+    </string-array>
+
+    <!-- True if camera app should be pinned via Pinner Service -->
+    <bool name="config_pinnerCameraApp">true</bool>
+
+    <!-- If true, the display will be shifted around in ambient mode. -->
+    <bool name="config_enableBurnInProtection">true</bool>
+</resources>
