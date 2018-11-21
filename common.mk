@@ -36,6 +36,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml \
 
+####################################################################################################################################################################################
+
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf:mtk \
@@ -49,6 +51,15 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/srs_processing.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/srs_processing.cfg:mtk \
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.camera.sound.forced=0 \
+    ro.audio.silent=0 \
+
+# Display
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sf.lcd_density=420 \
+    debug.sf.enable_hwc_vds=1 \
 
 # Images for LCD test in factory mode
 PRODUCT_COPY_FILES += \
@@ -65,6 +76,33 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles.xml
 
+# Performance
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.mtk_perf_simple_start_win=1 \
+    ro.mtk_perf_fast_start_win=1 \
+    ro.mtk_perf_response_time=1 \
+
+# Properties
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.service.acm.enable=0 \
+    qemu.hw.mainkeys=0 \
+    ro.mount.fs=EXT4 \
+    ro.mediatek.chip_ver=S01 \
+    ro.mediatek.platform=MT6797 \
+    ro.kernel.zio=38,108,105,16 \
+    ro.zygote.preload.enable=0 \
+    sys.ipo.disable=1 \
+    sys.ipo.pwrdncap=2 \
+
+# RIL
+SIM_COUNT := 2
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    rild.libpath=mtk-ril.so \
+    rild.libargs=-d/dev/ttyC0 \
+    ro.telephony.sim.count=2 \
+    persist.radio.default.sim=0 \
+
 # SAR
 #PRODUCT_PACKAGES += MTKSARTestProgram
 #PRODUCT_PACKAGES += SARSETTINGS
@@ -72,8 +110,21 @@ PRODUCT_COPY_FILES += \
 # Sensors
 PRODUCT_PACKAGES += pscali
 
-# Telephony property - SIM count
-SIM_COUNT := 2
+# USB
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sys.usb.bicr=no \
+    ro.sys.usb.charging.only=yes \
+    ro.sys.usb.mtp.whql.enable=0 \
+    ro.sys.usb.storage.type=mtp \
+
+# WiFi
+PRODUCT_PROPERTY_OVERRIDES += \
+    wifi.interface=wlan0 \
+    ro.mediatek.wlan.wsc=1 \
+    ro.mediatek.wlan.p2p=1 \
+    mediatek.wlan.ctia=0 \
+    wifi.tethering.interface=ap0 \
+    wifi.direct.interface=p2p0 \
 
 $(call inherit-product, device/mediatek/mt6797/device.mk)
 $(call inherit-product, vendor/mediatek/libs/k97v1_64/device-vendor.mk)
