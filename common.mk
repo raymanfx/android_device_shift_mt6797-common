@@ -36,6 +36,14 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml \
 
+# Permissions - GMS Express Plus
+ifneq ($(SHIFT_BUILD_WITH_GMS),false)
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/permissions/com.google.android.feature.gmsexpress_plus_build.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.google.android.feature.gmsexpress_plus_build.xml \
+
+endif
+
 ####################################################################################################################################################################################
 
 # Audio
