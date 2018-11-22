@@ -43,7 +43,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf:mtk \
 
 PRODUCT_COPY_FILES += \
-    frameworks/av/media/libeffects/data/audio_effects.conf:system/etc/audio_effects.conf \
+    frameworks/av/media/libeffects/data/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf \
 
 PRODUCT_COPY_FILES += \
     vendor/mediatek/proprietary/custom/SHIFT5me/factory/res/sound/testpattern1.wav:$(TARGET_COPY_OUT_VENDOR)/res/sound/testpattern1.wav:mtk \
@@ -69,8 +69,8 @@ PRODUCT_COPY_FILES += \
 
 # Keyboard layout
 PRODUCT_COPY_FILES += \
-    device/mediatek/mt6797/ACCDET.kl:system/usr/keylayout/ACCDET.kl:mtk \
-    $(LOCAL_PATH)/configs/keylayout/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl:mtk \
+    device/mediatek/mt6797/ACCDET.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/ACCDET.kl:mtk \
+    $(LOCAL_PATH)/configs/keylayout/mtk-kpd.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/mtk-kpd.kl:mtk \
 
 # Media
 PRODUCT_COPY_FILES += \
