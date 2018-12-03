@@ -47,6 +47,11 @@ PRODUCT_COPY_FILES += \
 
 endif
 
+# TODO: remove ASAP!!!
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/hacks/libion/lib/libion.so:$(TARGET_COPY_OUT_VENDOR)/lib/libion.so \
+    $(LOCAL_PATH)/hacks/libion/lib64/libion.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libion.so \
+
 ####################################################################################################################################################################################
 
 # Audio
