@@ -37,8 +37,9 @@ on init
     mkdir /protect_s 0771 system system
     mkdir /nvcfg 0771 system system
 
-    # Create nvdata mount point
-    mkdir /nvdata 0771 system system
+    # nvdata mount point
+    chown system system /vendor/etc/nvdata
+    chmod 0771 /vendor/etc/nvdata
 
     mkdir /mnt/cd-rom 0000 system system
 
@@ -108,11 +109,11 @@ on post-fs-data
 
     # create basic filesystem structure
     # mkdir /data/nvram 2770 root system
-    # We chown/chmod /nvdata again so because mount is run as root + defaults
-    chown root system /nvdata
-    chmod 0771 /nvdata
-    symlink /nvdata /data/nvram
-    mkdir /nvdata/media 0771 media audio
+    # We chown/chmod /vendor/etc/nvdata again so because mount is run as root + defaults
+    chown root system /vendor/etc/nvdata
+    chmod 0771 /vendor/etc/nvdata
+    symlink /vendor/etc/nvdata /data/nvram
+    mkdir /vendor/etc/nvdata/media 0771 media audio
 
     #Create cct mount point
     mkdir /data/cct
@@ -120,7 +121,7 @@ on post-fs-data
     chmod 0771 /data/cct
 
     # Set SELinux security contexts on upgrade or policy update.
-    restorecon_recursive /nvdata
+    restorecon_recursive /vendor/etc/nvdata
 
     chmod 0660 /data/misc/wifi/p2p_supplicant.conf
 
