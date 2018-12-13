@@ -28,9 +28,10 @@
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/md1img    /md1img           emmc    defaults                                                     defaults
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/md3img    /md3img           emmc    defaults                                                     defaults
 
-/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/nvcfg     /nvcfg            ext4    noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc     wait,check,formattable,nofail
-/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/nvdata    /nvdata           ext4    noatime,nosuid,nodev,noauto_da_alloc,discard                 wait,check,formattable,nofail
-/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/nvram     /nvram            emmc    defaults                                                     defaults
+# NVRAM
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/nvcfg     /vendor/etc/nvcfg  ext4   noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc     wait,check,formattable,nofail
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/nvdata    /vendor/etc/nvdata ext4   noatime,nosuid,nodev,noauto_da_alloc,discard                 wait,check,formattable,nofail
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/nvram     /nvram             emmc   defaults                                                     defaults
 
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/odmdtbo   /odmdtbo          emmc    defaults                                                     defaults
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/otp       /otp              emmc    defaults                                                     defaults
