@@ -35,7 +35,8 @@ on init
     # Temp Backward compatibility
     mkdir /protect_f 0771 system system
     mkdir /protect_s 0771 system system
-    mkdir /nvcfg 0771 system system
+    chown system system /vendor/etc/nvcfg
+    chmod 0771 /vendor/etc/nvcfg
 
     # nvdata mount point
     chown system system /vendor/etc/nvdata
@@ -103,9 +104,9 @@ on post-fs
 
 on post-fs-data
     write /proc/bootprof "INIT:post-fs-data"
-    chown system system /nvcfg
-    chmod 0771 /nvcfg
-    restorecon_recursive /nvcfg
+    chown system system /vendor/etc/nvcfg
+    chmod 0771 /vendor/etc/nvcfg
+    restorecon_recursive /vendor/etc/nvcfg
 
     # create basic filesystem structure
     # mkdir /data/nvram 2770 root system
