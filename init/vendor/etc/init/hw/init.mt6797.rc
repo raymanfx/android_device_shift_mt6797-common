@@ -116,6 +116,9 @@ on post-fs-data
     symlink /vendor/etc/nvdata /data/nvram
     mkdir /vendor/etc/nvdata/media 0771 media audio
 
+    # symlink /data/a to /data/nvram to satisfy hexedited blobs
+    symlink /data/nvram /data/a
+
     #Create cct mount point
     mkdir /data/cct
     chown root system /data/cct
