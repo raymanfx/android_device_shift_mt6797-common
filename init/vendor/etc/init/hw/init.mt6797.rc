@@ -33,8 +33,12 @@ on init
     chown shell system /proc/mtk_battery_cmd/discharging_cmd
 
     # Temp Backward compatibility
-    mkdir /protect_f 0771 system system
-    mkdir /protect_s 0771 system system
+    chown system system /vendor/etc/protect_f
+    chmod 0770 /vendor/etc/protect_f
+
+    chown system system /vendor/etc/protect_s
+    chmod 0770 /vendor/etc/protect_f
+
     chown system system /vendor/etc/nvcfg
     chmod 0771 /vendor/etc/nvcfg
 
@@ -96,14 +100,9 @@ on post-fs
     chown root system /proc/mtprof/cputime
     chown root system /proc/mtprof/reboot_pid
 
-    chown system system /protect_f
-    chmod 0770 /protect_f
-
-    chown system system /protect_s
-    chmod 0770 /protect_s
-
 on post-fs-data
     write /proc/bootprof "INIT:post-fs-data"
+
     chown system system /vendor/etc/nvcfg
     chmod 0771 /vendor/etc/nvcfg
     restorecon_recursive /vendor/etc/nvcfg
@@ -116,8 +115,15 @@ on post-fs-data
     symlink /vendor/etc/nvdata /data/nvram
     mkdir /vendor/etc/nvdata/media 0771 media audio
 
-    # symlink /data/a to /data/nvram to satisfy hexedited blobs
+    chown system system /vendor/etc/protect_f
+    chmod 0770 /vendor/etc/protect_f
+    chown system system /vendor/etc/protect_s
+    chmod 0770 /vendor/etc/protect_s
+
+    # symlink to satisfy hexedited blobs
     symlink /data/nvram /data/a
+    symlink /vendor/etc/protect_f /data/pr_f
+    symlink /vendor/etc/protect_s /data/pr_s
 
     #Create cct mount point
     mkdir /data/cct
