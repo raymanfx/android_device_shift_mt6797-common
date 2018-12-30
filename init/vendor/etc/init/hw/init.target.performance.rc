@@ -1,0 +1,32 @@
+# cluster 0 has cpu0, cpu1, cpu2, cpu3 | performance: efficiency | 221 - 1547 MHz
+# cluster 1 has cpu4, cpu5, cpu6, cpu7 | performance: balance    | 325 - 2002 MHz
+# cluster 2 has cpu8, cpu9             | performance: exteme     | 338 - 2522 MHz
+
+on init
+    # Add a cpuset for the camera daemon
+    mkdir /dev/cpuset/camera-daemon
+    write /dev/cpuset/camera-daemon/cpus 0
+    write /dev/cpuset/camera-daemon/mems 0
+    chown system system /dev/cpuset/camera-daemon
+    chown system system /dev/cpuset/camera-daemon/tasks
+    chmod 0664 /dev/cpuset/camera-daemon/tasks
+
+on boot
+    # initialize cpusets using all cores
+    write /dev/cpuset/top-app/cpus 0-9
+    write /dev/cpuset/foreground/cpus 0-9
+    write /dev/cpuset/background/cpus 0-9
+    write /dev/cpuset/system-background/cpus 0-9
+
+on property:sys.boot_completed=1
+    # Allow top app to use all cores and reserve CPU 9 for it
+    write /dev/cpuset/top-app/cpus 0-9
+
+    # Allow camera daemon to use the balanced cluster
+    # and reserve CPU 4 for it
+    write /dev/cpuset/camera-daemon/cpus 4-7
+    write /dev/cpuset/foreground/cpus 0-3,5-9
+
+    # Assign background tasks to efficiency cluster
+    write /dev/cpuset/background/cpus 0-1
+    write /dev/cpuset/system-background/cpus 0-3
