@@ -22,5 +22,8 @@ MTK_CAM_DEFAULT_ZSD_ON_SUPPORT := yes
 TARGET_RECOVERY_UI_MARGIN_HEIGHT := 32
 TARGET_RECOVERY_UI_MARGIN_WIDTH  := 32
 
+# Manifest for SHIFT-made HAL
+DEVICE_MANIFEST_FILE += device/shift/mt6797-common/manifest.xml
+
 # SEPolicy - include common MTK sepolicy
 include device/shift/sepolicy/mtk/sepolicy.mk
