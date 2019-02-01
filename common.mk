@@ -88,6 +88,10 @@ PRODUCT_COPY_FILES += \
     device/mediatek/mt6797/ACCDET.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/ACCDET.kl:mtk \
     $(LOCAL_PATH)/configs/keylayout/mtk-kpd.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/mtk-kpd.kl:mtk \
 
+# light HAL
+PRODUCT_PACKAGES += \
+    android.hardware.light@2.0-service-shift
+
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles.xml
