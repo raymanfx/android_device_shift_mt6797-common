@@ -107,11 +107,6 @@ Return<void> Light::getSupportedTypes(getSupportedTypes_cb _hidl_cb) {
     return Void();
 }
 
-bool Light::isLcdOn() {
-    uint32_t brightness = rgbToBrightness(mBacklightState);
-    return !!brightness;
-}
-
 bool Light::isLowBattery() {
     std::ifstream batt("/sys/class/power_supply/battery/capacity");
     std::string buffer;
@@ -146,8 +141,6 @@ void Light::setLcdBacklight(const LightState& state) {
     uint32_t brightness = rgbToBrightness(state);
     mLcdBacklight << brightness << std::endl;
 
-    LOG(ERROR) << __FUNCTION__ << ": isLcdOn(" << isLcdOn() << ")";
-
     // update leds
     setSpeakerBatteryLightLocked();
 }
@@ -170,24 +163,16 @@ void Light::setSpeakerBatteryLightLocked() {
                << ") Attention lit(" << isLit(mAttentionState) << ") Battery lit("
                << isLit(mBatteryState) << ")";
 
-    LOG(ERROR) << __FUNCTION__ << ": isLowBattery(" << isLowBattery()
-               << ") isLcdOn(" << isLcdOn() << ")";
+    LOG(ERROR) << __FUNCTION__ << ": isLowBattery(" << isLowBattery() << ")";
 
     // Don't update notification lights on low battery
     if (!isLowBattery()) {
-        // Don't update lights when sreen is on (user already has all info on screen)
-        if (!isLcdOn()) {
-            if (isLit(mNotificationState)) {
-                setSpeakerLightLocked(mNotificationState);
-            } else if (isLit(mAttentionState)) {
-                setSpeakerLightLocked(mAttentionState);
-            } else if (isLit(mBatteryState)) {
-                setSpeakerLightLocked(mBatteryState);
-            } else {
-                // Lights off
-                LOG(ERROR) << __FUNCTION__ << ": Turn off lights";
-                mLedBrightness << "0:0:0" << std::endl;
-            }
+        if (isLit(mNotificationState)) {
+            setSpeakerLightLocked(mNotificationState);
+        } else if (isLit(mAttentionState)) {
+            setSpeakerLightLocked(mAttentionState);
+        } else if (isLit(mBatteryState)) {
+            setSpeakerLightLocked(mBatteryState);
         } else {
             // Lights off
             LOG(ERROR) << __FUNCTION__ << ": Turn off lights";
