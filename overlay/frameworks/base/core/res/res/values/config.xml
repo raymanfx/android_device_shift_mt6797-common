@@ -136,4 +136,7 @@
 
     <!-- If true, the display will be shifted around in ambient mode. -->
     <bool name="config_enableBurnInProtection">true</bool>
+
+    <!-- Default color for notification LED. -->
+    <color name="config_defaultNotificationColor">#FF0000FF</color>
 </resources>
