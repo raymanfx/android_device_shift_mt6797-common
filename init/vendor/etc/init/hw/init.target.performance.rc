@@ -1,6 +1,6 @@
 # cluster 0 has cpu0, cpu1, cpu2, cpu3 | performance: efficiency | 221 - 1547 MHz
 # cluster 1 has cpu4, cpu5, cpu6, cpu7 | performance: balance    | 325 - 2002 MHz
-# cluster 2 has cpu8, cpu9             | performance: exteme     | 338 - 2522 MHz
+# cluster 2 has cpu8, cpu9             | performance: extreme    | 338 - 2522 MHz
 
 on init
     # Add a cpuset for the camera daemon
