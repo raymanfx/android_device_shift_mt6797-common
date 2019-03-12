@@ -30,3 +30,9 @@ on property:sys.boot_completed=1
     # Assign background tasks to efficiency cluster
     write /dev/cpuset/background/cpus 0-1
     write /dev/cpuset/system-background/cpus 0-3
+
+    # Configure KSM
+    write /sys/kernel/mm/ksm/sleep_millisecs 2500
+    write /sys/kernel/mm/ksm/pages_to_scan 256
+    write /sys/kernel/mm/ksm/deferred_timer 1
+    write /sys/kernel/mm/ksm/run 1
