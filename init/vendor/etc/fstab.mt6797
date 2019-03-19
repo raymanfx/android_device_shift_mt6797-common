@@ -8,7 +8,7 @@
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/recovery  /recovery         emmc    defaults                                                     defaults
 
 # Your data lives here, treat it well :-)
-/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/userdata  /data             ext4    noatime,nosuid,nodev,noauto_da_alloc                         wait,check,formattable,quota,resize,forceencrypt=/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/metadata
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/userdata  /data             ext4    noatime,nosuid,nodev,noauto_da_alloc,discard                 wait,check,formattable,quota,resize,forceencrypt=/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/metadata
 
 # Bootloader
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/lk        /bootloader       emmc    defaults                                                     defaults
