@@ -16,6 +16,11 @@ DEVICE_PACKAGE_OVERLAYS += \
     device/mediatek/common/overlay/sd_in_ex_otg \
     device/mediatek/common/overlay/navbar \
 
+# AAPT
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := 420dpi
+PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
+
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH  := 1080
