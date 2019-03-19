@@ -95,9 +95,14 @@ PRODUCT_COPY_FILES += \
     device/mediatek/mt6797/ACCDET.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/ACCDET.kl:mtk \
     $(LOCAL_PATH)/configs/keylayout/mtk-kpd.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/mtk-kpd.kl:mtk \
 
-# light HAL
+# Light HAL
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service-shift
+
+# Logs (set buffer to 1M on userdebug and eng builds)
+ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+PRODUCT_PROPERTY_OVERRIDES += ro.logd.size=1M
+endif
 
 # Media
 PRODUCT_COPY_FILES += \
