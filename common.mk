@@ -165,6 +165,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sys.usb.mtp.whql.enable=0 \
     ro.sys.usb.storage.type=mtp \
 
+# VNDK
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/vndk/ld.config.26.txt:system/etc/ld.config.26.txt \
+    $(LOCAL_PATH)/vndk/vndk.rc:system/etc/init/vndk.rc
+
 # WiFi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \

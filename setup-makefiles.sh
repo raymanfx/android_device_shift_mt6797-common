@@ -41,5 +41,8 @@ write_headers "SHIFT5me SHIFT6m"
 # The standard blobs
 write_makefiles "$MY_DIR"/proprietary-files.txt true
 
+# VNDK compat layer
+write_makefiles "$MY_DIR"/proprietary-files-vndk.txt true
+
 # We are done!
 write_footers
