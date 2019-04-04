@@ -91,6 +91,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.camera.sound.forced=0 \
     ro.audio.silent=0 \
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    audio.a2dp.default
+
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=420 \
