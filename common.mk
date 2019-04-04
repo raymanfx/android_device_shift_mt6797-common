@@ -48,6 +48,7 @@ PRODUCT_PACKAGES += \
 
 # Init
 PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,${LOCAL_PATH}/init/root,root) \
     $(call find-copy-subdir-files,*,${LOCAL_PATH}/init/vendor,$(TARGET_COPY_OUT_VENDOR))
 
 # Permissions
