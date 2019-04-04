@@ -55,6 +55,9 @@ TARGET_EXFAT_DRIVER := sdfat
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
+# Binder
+TARGET_USES_64_BIT_BINDER := true
+
 # Recovery
 BOARD_USES_RECOVERY_AS_BOOT := true
 TARGET_NO_RECOVERY := true
