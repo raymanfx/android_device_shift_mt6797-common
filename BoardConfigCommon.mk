@@ -98,8 +98,8 @@ BOARD_VNDK_VERSION := current
 # Vendor
 TARGET_COPY_OUT_VENDOR := vendor
 
-# Manifest for SHIFT-made HAL
-DEVICE_MANIFEST_FILE += device/shift/mt6797-common/manifest.xml
+# HIDL Manifest
+#DEVICE_MANIFEST_FILE += device/shift/mt6797-common/manifest.xml
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
