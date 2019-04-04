@@ -100,3 +100,8 @@ TARGET_COPY_OUT_VENDOR := vendor
 
 # Manifest for SHIFT-made HAL
 DEVICE_MANIFEST_FILE += device/shift/mt6797-common/manifest.xml
+
+# Shims
+TARGET_LD_SHIM_LIBS := \
+    /system/lib/vndk-26/libstagefright_omx.so|/system/lib/libstagefright_omx_shim.so \
+    /system/lib64/vndk-26/libstagefright_omx.so|/system/lib64/libstagefright_omx_shim.so

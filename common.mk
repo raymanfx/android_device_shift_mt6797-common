@@ -153,6 +153,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Sensors
 PRODUCT_PACKAGES += pscali
 
+# Shims
+PRODUCT_PACKAGES += \
+    libstagefright_omx_shim
+
 # USB
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sys.usb.bicr=no \
