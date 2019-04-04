@@ -1,0 +1,11 @@
+# Files in rootfs
+/nvcfg(/.*)?             u:object_r:nvcfg_file:s0
+/nvdata(/.*)?            u:object_r:nvdata_file:s0
+/protect_f(/.*)?         u:object_r:protect_f_data_file:s0
+/protect_s(/.*)?         u:object_r:protect_f_data_file:s0
+
+# resize2fs must run on init
+/system/bin/resize2fs u:object_r:fsck_exec:s0
+
+# Kernel Power Off Charging (KPOC)
+/system/bin/kpoc_charger u:object_r:kpoc_charger_exec:s0

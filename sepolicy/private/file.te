@@ -1,0 +1,2 @@
+type sysfs_ktd2037, fs_type, sysfs_type;
+type sysfs_power_supply, fs_type, sysfs_type;

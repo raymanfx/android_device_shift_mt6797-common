@@ -1,0 +1,20 @@
+type protect_f_data_file, file_type, data_file_type;
+type protect_s_data_file, file_type, data_file_type;
+type persist_data_file, file_type, data_file_type;
+type nvram_data_file, file_type, data_file_type;
+type nvdata_file, file_type, data_file_type;
+type nvcfg_file, file_type, data_file_type;
+
+type proc_thermal, fs_type;
+type proc_mtkcooler, fs_type;
+type proc_mtktz, fs_type;
+type proc_lk_env, fs_type;
+type proc_slogger, fs_type;
+type proc_icusb, fs_type;
+type proc_mrdump_rst, fs_type;
+type proc_battery_cmd, fs_type;
+type proc_ged, fs_type;
+type proc_perfmgr, fs_type;
+type iso9660, fs_type;
+type rawfs, fs_type, mlstrustedobject;
+type fuseblk,sdcard_type,fs_type,mlstrustedobject;

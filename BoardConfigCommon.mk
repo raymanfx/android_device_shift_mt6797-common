@@ -86,5 +86,9 @@ LZMA_RAMDISK_TARGETS := recovery
 # Seccomp filters
 BOARD_SECCOMP_POLICY += $(COMMON_PATH)/seccomp
 
+# SELinux
+BOARD_SEPOLICY_VERS := $(PLATFORM_SDK_VERSION).0
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
+
 # Manifest for SHIFT-made HAL
 DEVICE_MANIFEST_FILE += device/shift/mt6797-common/manifest.xml
