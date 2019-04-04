@@ -1,0 +1,61 @@
+# RIL hacks
+vendor/lib64/mtk-ril.so:lib64/mtk-ril.so
+vendor/lib/mtk-ril.so:lib/mtk-ril.so
+
+# Thermal
+bin/thermalindicator
+etc/init/thermalindicator.rc
+
+# ?
+etc/apdb/APDB_MT6797_S01_alps-trunk-o0.tk_W17.45
+etc/apdb/APDB_MT6797_S01_alps-trunk-o0.tk_W17.45_ENUM
+
+# Permissions
+etc/permissions/privapp-permissions-mediatek.xml
+
+# Kernel Power Off Charging (KPOC)
+bin/kpoc_charger
+etc/init/kpoc_charger.rc
+
+# Graphics
+lib64/libgralloc_extra_sys.so
+lib/libgralloc_extra_sys.so
+
+# IMS/VT - FIXME
+#bin/vtservice
+lib64/libged_sys.so
+lib/libged_sys.so
+lib64/libimsma.so
+lib/libimsma.so
+lib64/libimsma_adapt.so
+lib/libimsma_adapt.so
+lib64/libimsma_rtp.so
+lib/libimsma_rtp.so
+lib64/libimsma_socketwrapper.so
+lib/libimsma_socketwrapper.so
+lib/libmtk_vt_service.so
+lib64/libvt_avsync.so
+lib/libvt_avsync.so
+lib64/vendor.mediatek.hardware.power@1.1.so
+lib/vendor.mediatek.hardware.power@1.1.so
+lib64/vendor.mediatek.hardware.videotelephony@1.0.so
+lib/vendor.mediatek.hardware.videotelephony@1.0.so
+
+# IMS dependencies
+#lib64/libion.so
+#lib/libion.so
+lib64/libcomutils.so
+lib/libcomutils.so
+lib64/libsignal.so
+lib/libsignal.so
+lib64/libsink.so
+lib/libsink.so
+lib64/libsource.so
+lib/libsource.so
+
+# Camera Phase Detection Auto Focus (PDAF)
+lib64/libSonyIMX230PdafLibrary.so
+lib/libSonyIMX230PdafLibrary.so
+
+# NFC
+etc/permissions/com.nxp.nfc.xml
