@@ -83,5 +83,8 @@ else
 endif
 LZMA_RAMDISK_TARGETS := recovery
 
+# Seccomp filters
+BOARD_SECCOMP_POLICY += $(COMMON_PATH)/seccomp
+
 # Manifest for SHIFT-made HAL
 DEVICE_MANIFEST_FILE += device/shift/mt6797-common/manifest.xml
