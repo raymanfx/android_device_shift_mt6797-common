@@ -182,3 +182,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Remove unwanted packages
 PRODUCT_PACKAGES += \
     RemovePackages
+
+# call the proprietary setup
+$(call inherit-product, vendor/shift/mt6797-common/mt6797-common-vendor.mk)

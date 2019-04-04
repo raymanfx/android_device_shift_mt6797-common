@@ -105,3 +105,6 @@ DEVICE_MANIFEST_FILE += device/shift/mt6797-common/manifest.xml
 TARGET_LD_SHIM_LIBS := \
     /system/lib/vndk-26/libstagefright_omx.so|/system/lib/libstagefright_omx_shim.so \
     /system/lib64/vndk-26/libstagefright_omx.so|/system/lib64/libstagefright_omx_shim.so
+
+# Inherit from the proprietary version
+-include vendor/shift/mt6797-common/BoardConfigVendor.mk
