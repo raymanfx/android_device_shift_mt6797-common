@@ -1,3 +1,5 @@
+COMMON_PATH := device/shift/mt6797-common
+
 # Platform
 TARGET_BOARD_PLATFORM := mt6797
 TARGET_NO_BOOTLOADER := true
@@ -54,8 +56,19 @@ TARGET_EXFAT_DRIVER := sdfat
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Recovery
+BOARD_USES_RECOVERY_AS_BOOT := true
+TARGET_NO_RECOVERY := true
 TARGET_RECOVERY_UI_MARGIN_HEIGHT := 32
 TARGET_RECOVERY_UI_MARGIN_WIDTH  := 32
+ifeq ($(RECOVERY_VARIANT),twrp)
+    TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/twrp/twrp.fstab
+    TW_EXCLUDE_DEFAULT_USB_INIT := true
+    TW_EXCLUDE_TWRPAPP := true
+    TW_USE_TOOLBOX := true
+else
+    TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/init/root/fstab.mt6797
+endif
+LZMA_RAMDISK_TARGETS := recovery
 
 # Manifest for SHIFT-made HAL
 DEVICE_MANIFEST_FILE += device/shift/mt6797-common/manifest.xml
