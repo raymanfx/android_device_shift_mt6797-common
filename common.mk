@@ -129,3 +129,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     mediatek.wlan.ctia=0 \
     wifi.tethering.interface=ap0 \
     wifi.direct.interface=p2p0 \
+
+# Remove unwanted packages
+PRODUCT_PACKAGES += \
+    RemovePackages
