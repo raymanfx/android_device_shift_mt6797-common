@@ -94,6 +94,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=420 \
     debug.sf.enable_hwc_vds=1 \
 
+# HIDL
+PRODUCT_PACKAGES += \
+    android.hidl.base@1.0 \
+    android.hidl.manager@1.0
+
 # Keyboard layout
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/keylayout/mtk-kpd.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/mtk-kpd.kl:mtk \
