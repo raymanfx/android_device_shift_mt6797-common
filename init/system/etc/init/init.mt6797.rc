@@ -1,0 +1,48 @@
+on init
+    # HACK to disable forced encryption
+    mount none /fstab.mt6797 /vendor/etc/fstab.mt6797 bind
+
+    # create mount points
+    mkdir /vendor/etc/protect_f 0771 system system
+    mkdir /vendor/etc/protect_s 0771 system system
+    mkdir /vendor/etc/nvdata 0771 system system
+    mkdir /vendor/etc/nvcfg 0771 system system
+
+service mtk_hal_imsa /system/bin/true
+    oneshot
+
+# "sleep infinity" returns immediately..
+service emdlogger1 /system/bin/sleep 2147483647
+    class main
+    user shell
+    group system shell radio sdcard_rw inet sdcard_r media_rw
+    writepid /dev/cpuset/system-background/tasks
+    disabled
+    oneshot
+
+# "sleep infinity" returns immediately..
+service emdlogger2 /system/bin/sleep 2147483647
+    class main
+    user shell
+    group system shell radio sdcard_rw inet sdcard_r media_rw
+    writepid /dev/cpuset/system-background/tasks
+    disabled
+    oneshot
+
+# "sleep infinity" returns immediately..
+service emdlogger3 /system/bin/sleep 2147483647
+    class main
+    user shell
+    group system shell radio sdcard_rw inet sdcard_r media_rw
+    writepid /dev/cpuset/system-background/tasks
+    disabled
+    oneshot
+
+# "sleep infinity" returns immediately..
+service emdlogger5 /system/bin/sleep 2147483647
+    class main
+    user shell
+    group system shell radio sdcard_rw inet sdcard_r media_rw
+    writepid /dev/cpuset/system-background/tasks
+    disabled
+    oneshot
