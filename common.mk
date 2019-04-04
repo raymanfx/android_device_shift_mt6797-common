@@ -39,11 +39,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml \
 
-# TODO: remove ASAP!!!
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/hacks/libion/lib/libion.so:$(TARGET_COPY_OUT_VENDOR)/lib/libion.so \
-    $(LOCAL_PATH)/hacks/libion/lib64/libion.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libion.so \
-
 ####################################################################################################################################################################################
 
 # Audio
