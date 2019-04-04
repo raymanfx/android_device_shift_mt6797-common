@@ -2,10 +2,7 @@
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
 # overlay has priorities. high <-> low.
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    device/mediatek/common/overlay/sd_in_ex_otg \
-    device/mediatek/common/overlay/navbar \
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
@@ -56,9 +53,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libeffects/data/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf \
 
-PRODUCT_COPY_FILES += \
-    vendor/mediatek/proprietary/custom/SHIFT5me/factory/res/sound/testpattern1.wav:$(TARGET_COPY_OUT_VENDOR)/res/sound/testpattern1.wav:mtk \
-    vendor/mediatek/proprietary/custom/SHIFT5me/factory/res/sound/ringtone.wav:$(TARGET_COPY_OUT_VENDOR)/res/sound/ringtone.wav:mtk \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/srs_processing.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/srs_processing.cfg:mtk \
@@ -72,15 +66,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=420 \
     debug.sf.enable_hwc_vds=1 \
 
-# Images for LCD test in factory mode
-PRODUCT_COPY_FILES += \
-    vendor/mediatek/proprietary/custom/SHIFT5me/factory/res/images/lcd_test_00.png:$(TARGET_COPY_OUT_VENDOR)/res/images/lcd_test_00.png:mtk \
-    vendor/mediatek/proprietary/custom/SHIFT5me/factory/res/images/lcd_test_01.png:$(TARGET_COPY_OUT_VENDOR)/res/images/lcd_test_01.png:mtk \
-    vendor/mediatek/proprietary/custom/SHIFT5me/factory/res/images/lcd_test_02.png:$(TARGET_COPY_OUT_VENDOR)/res/images/lcd_test_02.png:mtk \
-
 # Keyboard layout
 PRODUCT_COPY_FILES += \
-    device/mediatek/mt6797/ACCDET.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/ACCDET.kl:mtk \
     $(LOCAL_PATH)/configs/keylayout/mtk-kpd.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/mtk-kpd.kl:mtk \
 
 # Light HAL
@@ -143,6 +130,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
     mediatek.wlan.ctia=0 \
     wifi.tethering.interface=ap0 \
     wifi.direct.interface=p2p0 \
-
-$(call inherit-product, device/mediatek/mt6797/device.mk)
-$(call inherit-product, vendor/mediatek/libs/k97v1_64/device-vendor.mk)
