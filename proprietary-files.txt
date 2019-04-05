@@ -1,7 +1,3 @@
-# RIL hacks
-vendor/lib64/mtk-ril.so:lib64/mtk-ril.so
-vendor/lib/mtk-ril.so:lib/mtk-ril.so
-
 # Thermal
 bin/thermalindicator
 etc/init/thermalindicator.rc

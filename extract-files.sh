@@ -59,14 +59,4 @@ setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true "$CLEAN_VENDOR"
 extract "$MY_DIR"/proprietary-files.txt "$SRC"
 extract "$MY_DIR"/proprietary-files-vndk.txt "$SRC"
 
-# Hack MTK RIL libs for USSD and incoming calls
-# see https://github.com/phhusson/treble_experimentations/issues/57#issuecomment-416998086
-BLOB_ROOT="$LINEAGE_ROOT"/vendor/"$VENDOR"/"$DEVICE_COMMON"/proprietary
-
-for blob in $BLOB_ROOT/lib/mtk-ril.so $BLOB_ROOT/lib64/mtk-ril.so;do
-    sed -i \
-        -e 's/AT+EAIC=2/AT+EAIC=3/g' \
-        $blob
-done
-
 "$MY_DIR"/setup-makefiles.sh
