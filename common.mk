@@ -125,6 +125,10 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles.xml
 
+# OTA (bootctrl HAL reads this value)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.mtk_emmc_support=1
+
 # Performance
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.mtk_perf_simple_start_win=1 \
